@@ -6,6 +6,9 @@ $size = (isset($args['size'])) ? $args['size'] : 'large';
 
 echo wp_get_attachment_image( $args['id'], $size, false, ['alt' => $post_thumbnail_alt] ); 
 
-get_template_part('templates/parts/title-caption', null, ['id' => $args['id']]);
+if(!is_home()){
+	get_template_part('templates/parts/title-caption', null, ['id' => $args['id']]);	
+}
+
 ?>
 

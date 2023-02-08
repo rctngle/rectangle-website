@@ -73,3 +73,7 @@ $titles[] = get_bloginfo('name');
 </head>
 
 <body class="<?php echo implode(' ', $classes); ?>">
+<div class="siteborder"></div>
+
+
+

@@ -1,0 +1,97 @@
+
+@mixin commas {
+	> span, > div, > a {
+		&::after {
+			content: ', ';
+		}
+		&:nth-last-child(1)::after {
+			content: '';
+		}
+	}
+}
+
+@mixin roundborder {
+	border-radius: 10px;
+}
+
+.commas {
+	@include commas;
+}
+
+
+
+@mixin flexvertical {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+}
+
+
+
+@mixin absolute {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+
+
+.upper {
+	text-transform: uppercase;
+}
+
+.mobile {
+	@include breakpoint(xsm){
+		display: none;
+	}
+}
+
+
+@mixin imagecover {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+
+@mixin imageblock {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+@mixin imagecontain {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+
+
+@mixin smooth {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin nosmooth {
+	-webkit-font-smoothing: initial;
+	-moz-osx-font-smoothing: initial;	
+}
+
+
+@mixin borderbottom($color: #000) {
+	border-bottom: 1px solid $color;
+	&:nth-last-child(1){
+		border-bottom: none;
+	}
+}
+
+@mixin borderright($color: #000) {
+	border-right: 1px solid $color;
+	&:nth-last-child(1){
+		border-right: none;
+	}
+}

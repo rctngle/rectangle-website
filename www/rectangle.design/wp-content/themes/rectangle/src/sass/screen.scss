@@ -22,3 +22,124 @@ html {
 *, *:before, *:after {
 	box-sizing: inherit;
 }
+
+
+:root {
+	--padding: 7.5vw;
+	--text-width: 700px;
+	--max-width: 1600px;
+	--smpadding: 20px;
+	@include breakpoint(xsm){
+		--padding: 7.5vw;		
+	}
+}
+
+html, body {
+	min-height: 100%;
+}
+
+html {
+	font-size: 14px;
+	@include breakpoint(xsm){
+		font-size: 16px;		
+	}
+
+}
+
+
+@import "mixins";
+@import "archive";
+@import "fonts";
+@import "footer";
+@import "typography";
+@import "structure";
+@import "header";
+@import "media";
+@import "home";
+@import "preview";
+@import "page";
+@import "post";
+
+body {
+	font-family: sans-serif;
+	letter-spacing: 0.03em;
+	line-height: 1.35;
+	@include smooth;
+}
+
+
+
+body.touch {
+	// .rectangle-column {
+	// 	top: 4vw;
+	// }
+	.siteborder {
+		border: 0;
+		border-top: 8px solid #000;
+	}
+}
+
+.siteborder {
+	@include absolute;
+	position: fixed;
+	z-index: 3;
+	pointer-events: none;
+	border: none;
+	border-top: 8px solid #000;
+	@include breakpoint(xsm) {	
+		border: 8px solid #000;			
+
+	}
+}
+
+
+.rectangle {
+	position: fixed;
+	font-family: serif;	
+	font-size: 4.5vw;
+	z-index: 3;
+	width: 100vw;
+	text-align: center;
+	height: 0;
+	a {
+		text-decoration: none;
+		&:hover {
+			color: blue;
+		}
+	}
+	> div {
+		position: absolute;
+		padding-top: 1vw;
+		padding-bottom: 1vw;
+		// top: 4vw;
+		height: 100vh;
+		// bottom: 2vw;
+		@include flexvertical;
+		justify-content: space-between;
+	}
+	&__left {
+
+		padding-left: 2vw;
+	}
+	&__center {
+		left: 50%;
+		width: 3vw;
+		margin-left: -1.5vw;
+	}
+	&__right {
+		padding-right: 2vw;
+		right: 0;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

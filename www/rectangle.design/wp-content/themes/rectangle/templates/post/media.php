@@ -10,9 +10,9 @@ $media = get_field($field);
 
 		<?php foreach($group as $entry): ?>
 			<?php if ($entry['image']): ?>
-				<?php get_template_part('templates/parts/image', null, ['id' => $entry['image']['ID']]); ?>
+				<div class="post__mediaitem"><?php get_template_part('templates/parts/image', null, ['id' => $entry['image']['ID'], 'size'=>'2048x2048']); ?></div>
 			<?php elseif($entry['file'] && $entry['file']['type'] == 'video'): ?> 
-				<?php get_template_part('templates/parts/video', null, ['file' => $entry['file'], 'audio' => $entry['audio']]); ?>
+				<div class="post__mediaitem"><?php get_template_part('templates/parts/video', null, ['file' => $entry['file'], 'audio' => $entry['audio']]); ?><div>
 			<?php endif; ?>
 		<?php endforeach; ?>
 	<?php endforeach; ?>

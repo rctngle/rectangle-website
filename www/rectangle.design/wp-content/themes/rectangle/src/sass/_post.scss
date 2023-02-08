@@ -1,0 +1,40 @@
+.post {
+	$self: &;
+	&--layout-75_25 {
+		.rectangle__center {
+			left: 68%;
+		}
+		#{$self}__media {			
+			grid-template-columns: 3fr 1.41fr;	
+
+		}
+		#{$self}__medialeft {
+		}
+	}
+	&--layout-50_50 {
+		#{$self}__media {	
+
+			grid-template-columns: 1fr 1fr;			
+		}
+	}
+	&--layout-100 {
+		.rectangle__center {
+			left: 85%;
+		}
+		#{$self}__media {
+			grid-template-columns: 85% 15%;
+		}
+	}
+	&__mediaitem {
+		margin: calc(var(--padding) / 2) 0;
+	}
+	&__mediacaption {
+		display: flex;
+		justify-content: flex-end;
+		> div {
+			flex: 0 1 50%;
+			padding: var(--smpadding);
+			@include caption;
+		}
+	}
+}

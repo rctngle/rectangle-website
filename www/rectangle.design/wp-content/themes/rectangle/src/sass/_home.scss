@@ -1,0 +1,18 @@
+.post__media, .projects {
+	> div:nth-child(even) {
+		padding: 0 var(--padding) var(--padding) calc(var(--padding) / 2);
+	}
+	> div:nth-child(odd) {
+		padding: 0 calc(var(--padding) / 2) var(--padding) var(--padding);
+	}	
+}
+
+.about, .post__about {
+	> div:nth-child(even) {
+		padding: var(--padding) var(--padding) 0 calc(var(--padding) / 2);
+	}
+	> div:nth-child(odd) {
+		padding: var(--padding) calc(var(--padding) / 2) 0 var(--padding);
+	}
+}
+

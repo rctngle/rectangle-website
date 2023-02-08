@@ -14,6 +14,8 @@ function rectangle_wrap_embed_with_div($html, $url, $attr) {
 
 add_filter('embed_oembed_html', 'rectangle_wrap_embed_with_div', 10, 4);
 
+add_post_type_support( 'post', 'page-attributes' );
+
 
 function rectangle_pre_get_posts( $query) {
 	if (!is_admin() && $query->is_main_query()) {
@@ -30,6 +32,20 @@ function rectangle_get_post_object_ids($posts) {
 		}
 	}
 	return $post_ids;
+}
+
+function rectangle_get_post_query_by_ids($post_ids) {
+
+	if (count($post_ids) > 0) {
+		return new WP_Query([
+			'post_type' => 'post',
+			'posts_per_page' => -1,
+			'post__in' => $post_ids,
+			'orderby' => 'post__in',
+			'order' => 'ASC',
+		]);
+	}
+	return false;
 }
 
 function rectangle_get_post_query($posts) {

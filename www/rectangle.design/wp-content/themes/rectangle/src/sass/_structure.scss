@@ -1,0 +1,63 @@
+
+.grid {
+	align-content: flex-start;
+	@include breakpoint(xsm){
+		display: grid;
+	}
+	&--gap {
+		grid-gap: calc(var(--padding) * 1);
+	}
+	&--gap-2 {
+		grid-gap: var(--padding);
+		@include breakpoint(md){
+			grid-gap: calc(var(--padding) * 2);	
+		}
+		
+	}
+
+	&--span-all {
+		grid-column: 1/-1;
+	}
+	&--rowspan-2 {
+		grid-row: span 2;
+	}
+}
+
+
+@for $i from 1 through 10 {
+	.grid--columns-#{$i} {
+		grid-template-columns: repeat($i, minmax(0, 1fr));
+	}
+	.grid--span-#{$i} {
+		grid-column: span $i;
+	}
+	.grid--rowspan-#{$i} {
+		grid-row: span $i;
+	}
+	[data-columns="#{$i}"]{
+		grid-template-columns: repeat($i, minmax(0, 1fr));		
+	}
+}
+
+
+
+.container {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 var(--padding);
+	position: relative;
+	width: 100%;
+	@include breakpoint(md){
+		padding: 0 calc(var(--padding) * 2);
+	}
+}
+
+.columns {
+	column-fill: balance;
+	column-count: 2;
+	column-gap: calc(var(--padding) * 2);
+	article {
+		break-inside: avoid;
+		margin-bottom: calc(var(--padding) * 2);
+	}
+}
