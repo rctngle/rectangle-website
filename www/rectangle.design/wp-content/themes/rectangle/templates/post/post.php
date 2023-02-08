@@ -4,6 +4,34 @@ $post_classes = get_post_class();
 
 $post_classes[] = 'post--layout-' . get_field('layout');
 
+
+$projects_query = new WP_Query([
+	'post_type' => 'post',
+	'posts_per_page' => -1,
+	'orderby' => 'menu_order',
+	'order' => 'ASC',
+]);
+
+$prev_idx = 0;
+$next_idx = 0;
+foreach($projects_query->posts as $idx => $project) {
+	if ($project->ID == get_the_ID()) {
+		$prev_idx = $idx - 1;
+		$next_idx = $idx + 1;
+	}
+
+	if ($prev_idx < 0) {
+		$prev_idx = count($projects_query->posts) - 1;
+	}
+
+	if ($next_idx > count($projects_query->posts) - 1) {
+		$next_idx = 0;
+	}
+}
+
+$prev = $projects_query->posts[$prev_idx];
+$next = $projects_query->posts[$next_idx];
+
 ?>
 
 <article class="<?php echo implode(' ', $post_classes); ?>">
@@ -33,15 +61,13 @@ $post_classes[] = 'post--layout-' . get_field('layout');
 			<?php if (get_field('url')): ?>
 				<div><a href="<?php the_field('url'); ?>" target="_blank"><?php echo parse_url(get_field('url'))['host']; ?></a></div>
 			<?php endif; ?>
-			<br/>
+
+			<a href="<?php echo get_the_permalink($prev); ?>">&larr;</a>
+			Project <?php echo get_post_field( 'menu_order', get_the_ID()); ?> / <?php echo wp_count_posts()->publish; ?>
+			<a href="<?php echo get_the_permalink($next); ?>">&rarr;</a>
+
 			<div>
 				<?php the_content(); ?>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>					
 			</div>
 		</div>
 	</div>
