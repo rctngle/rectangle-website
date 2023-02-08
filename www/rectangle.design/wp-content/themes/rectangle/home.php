@@ -18,7 +18,8 @@ $home_header_right_page_query = rectangle_get_post_query($home_header_right_page
 $projects = new WP_Query([
 	'post_type' => 'post',
 	'posts_per_page' => -1,
-	'order' => 'DESC',
+	'orderby' => 'menu_order',
+	'order' => 'ASC',
 ]);
 
 $left_project_ids = [];
