@@ -15,6 +15,27 @@ foreach($home_header_right_page_names as $home_header_page_name) {
 $home_header_left_page_query = rectangle_get_post_query($home_header_left_pages);
 $home_header_right_page_query = rectangle_get_post_query($home_header_right_pages);
 
+
+
+
+$home_footer_left_page_names = ['workshops'];
+$home_footer_right_page_names = ['talks-lectures', 'teaching', 'interns'];
+
+$home_footer_left_pages = [];
+foreach($home_footer_left_page_names as $home_footer_page_name) {
+	$home_footer_left_pages[] = get_page_by_path($home_footer_page_name, OBJECT, 'page');
+}
+$home_footer_right_pages = [];
+foreach($home_footer_right_page_names as $home_footer_page_name) {
+	$home_footer_right_pages[] = get_page_by_path($home_footer_page_name, OBJECT, 'page');
+}
+
+$home_footer_left_page_query = rectangle_get_post_query($home_footer_left_pages);
+$home_footer_right_page_query = rectangle_get_post_query($home_footer_right_pages);
+
+
+
+
 $projects = new WP_Query([
 	'post_type' => 'post',
 	'posts_per_page' => -1,
@@ -95,6 +116,29 @@ $home_right_project_query = rectangle_get_post_query_by_ids($right_project_ids);
 				<?php while($home_right_project_query->have_posts()): $home_right_project_query->the_post(); ?>
 				
 					<?php get_template_part('templates/post/preview');?>
+
+				<?php endwhile; ?>
+			</div>
+		<?php endif; ?>
+	</div>
+
+	<div class="about grid grid--columns-2">
+		<?php if ($home_footer_left_page_query->have_posts()): ?>
+			<div>
+				<?php while($home_footer_left_page_query->have_posts()): $home_footer_left_page_query->the_post(); ?>
+				
+					<h4><?php the_title(); ?></h4>
+					<div><?php the_content(); ?></div>
+
+				<?php endwhile; ?>
+			</div>
+		<?php endif; ?>
+		<?php if ($home_footer_right_page_query->have_posts()): ?>
+			<div>
+				<?php while($home_footer_right_page_query->have_posts()): $home_footer_right_page_query->the_post(); ?>
+				
+					<h4><?php the_title(); ?></h4>
+					<div><?php the_content(); ?></div>
 
 				<?php endwhile; ?>
 			</div>
