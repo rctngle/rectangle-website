@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+build/
+vendor/
+
+/www/rectangle.design/*
+!/www/rectangle.design/wp-config.php
+!/www/rectangle.design/wp-content/
+/www/rectangle.design/wp-content/*
+!/www/rectangle.design/wp-content/themes/
+/www/rectangle.design/wp-content/themes/*
+!/www/rectangle.design/wp-content/themes/rectangle
