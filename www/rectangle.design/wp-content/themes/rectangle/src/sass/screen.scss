@@ -29,6 +29,7 @@ html {
 	--text-width: 700px;
 	--max-width: 1600px;
 	--smpadding: 10px;
+	--highlight: #ffcf5c;
 	@include breakpoint(xsm){
 		--padding: 7.5vw;
 		--smpadding: 20px;		
@@ -83,6 +84,8 @@ body.touch {
 	}
 }
 
+
+
 .siteborder {
 	@include absolute;
 	position: fixed;
@@ -107,6 +110,7 @@ body.touch {
 	height: 0;
 	font-weight: bold;
 	font-size: 3.5vw;
+	top: 0;
 	@include breakpoint(xsm){
 		font-size: 4.5vw;
 		font-weight: normal;
@@ -144,7 +148,20 @@ body.touch {
 		padding-right: 2vw;
 		right: 0;
 	}
+	&--main {
+		top: 0;
+	}
+	&--fixed {
+		position: fixed;
+	}
+	&--moving {
+		bottom: 3vw;
+		position: absolute;
+		height: calc(100vh - 3vw);
+		top: auto;
+	}
 }
+
 
 
 

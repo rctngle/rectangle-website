@@ -10,7 +10,9 @@
 	
 	border-bottom: 8px solid #000;
 	padding: calc(var(--padding) / 2) 0;
-
+	&:nth-last-child(1){
+		border-bottom: none;
+	}
 	&__title {
 		@include breakpoint(xsm){
 			display: grid;	

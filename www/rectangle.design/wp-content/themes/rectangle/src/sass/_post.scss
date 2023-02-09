@@ -37,4 +37,16 @@
 			@include caption;
 		}
 	}
+	&__content {
+		margin-top: 1rem;
+	}
+	&__titlecontrols {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__controls {
+		a {
+			text-decoration: none;
+		}
+	}
 }

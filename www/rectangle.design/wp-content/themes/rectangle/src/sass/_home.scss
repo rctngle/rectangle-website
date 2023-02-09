@@ -1,18 +1,58 @@
 .post__media, .projects {
-	> div:nth-child(even) {
+	.column:nth-child(even) {
 		padding: 0 var(--padding) var(--padding) calc(var(--padding) / 2);
 	}
-	> div:nth-child(odd) {
+	.column:nth-child(odd) {
 		padding: 0 calc(var(--padding) / 2) var(--padding) var(--padding);
 	}	
 }
 
 .about, .post__about {
-	> div:nth-child(even) {
+	.column:nth-child(even) {
 		padding: var(--padding) var(--padding) 0 calc(var(--padding) / 2);
 	}
-	> div:nth-child(odd) {
+	.column:nth-child(odd) {
 		padding: var(--padding) calc(var(--padding) / 2) 0 var(--padding);
 	}
 }
 
+.projectscontainer {
+	position: relative;
+}
+
+.endmatter {
+	background: #000;
+	color: var(--highlight);
+	min-height: 100vh;
+	div.rectangle {
+		position: sticky;
+		top: 0;
+		padding: 0;
+	}
+	ul {
+		list-style-type: square;
+		margin-top: 0;
+		padding: 0;
+	}
+	img {
+
+		@include imageblock;
+		width: 100% !important;
+	}
+	div.wp-caption {
+		margin: 2rem 0;
+		width: 100% !important;
+		p {
+			font-size: 12px;
+			text-align: right;
+			margin: 10px 0 0 0;
+		}	
+	}
+
+	li {
+		margin-bottom: 1rem;
+	}
+	.talks-lectures li {
+		margin-bottom: 0;
+	}
+}
