@@ -1,9 +1,7 @@
 
 .grid {
-	align-content: flex-start;
-	@include breakpoint(xsm){
-		display: grid;
-	}
+	display: grid;
+	
 	&--gap {
 		grid-gap: calc(var(--padding) * 1);
 	}

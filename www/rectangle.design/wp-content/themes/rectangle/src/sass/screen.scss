@@ -25,12 +25,13 @@ html {
 
 
 :root {
-	--padding: 7.5vw;
+	--padding: 6vw;
 	--text-width: 700px;
 	--max-width: 1600px;
-	--smpadding: 20px;
+	--smpadding: 10px;
 	@include breakpoint(xsm){
-		--padding: 7.5vw;		
+		--padding: 7.5vw;
+		--smpadding: 20px;		
 	}
 }
 
@@ -39,9 +40,12 @@ html, body {
 }
 
 html {
-	font-size: 14px;
+	font-size: 11px;
 	@include breakpoint(xsm){
-		font-size: 16px;		
+		font-size: 15px;		
+	}
+	@include breakpoint(md){
+		font-size: 16px;
 	}
 
 }
@@ -96,11 +100,17 @@ body.touch {
 .rectangle {
 	position: fixed;
 	font-family: serif;	
-	font-size: 4.5vw;
+	
 	z-index: 3;
 	width: 100vw;
 	text-align: center;
 	height: 0;
+	font-weight: bold;
+	font-size: 3.5vw;
+	@include breakpoint(xsm){
+		font-size: 4.5vw;
+		font-weight: normal;
+	}
 	a {
 		text-decoration: none;
 		&:hover {
@@ -109,13 +119,17 @@ body.touch {
 	}
 	> div {
 		position: absolute;
-		padding-top: 1vw;
-		padding-bottom: 1vw;
+		padding-top: 3vw;
+		padding-bottom: 3vw;
 		// top: 4vw;
 		height: 100vh;
 		// bottom: 2vw;
 		@include flexvertical;
 		justify-content: space-between;
+		@include breakpoint(xsm){
+			padding-top: 1vw;
+			padding-bottom: 1vw;
+		}
 	}
 	&__left {
 
