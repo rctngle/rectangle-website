@@ -1,5 +1,14 @@
 <?php
 
+add_action('registered_post_type', 'rectangle_make_posts_hierarchical', 10, 2 );
+
+// Runs after each post type is registered
+function rectangle_make_posts_hierarchical($post_type, $pto){
+	global $wp_post_types;
+	$wp_post_types['post']->hierarchical = 1;
+	add_post_type_support( 'post', 'page-attributes' );
+}
+
 function rectangle_admin_style() {
 	wp_enqueue_style( 'admin-style', get_template_directory_uri() . '/build/styles/admin.css?t=' . time());
 }
@@ -9,6 +18,7 @@ function rectangle_after_theme_setup() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'editor-styles' );
 	add_editor_style( array( 'build/styles/editor.css' ) );
+
 }
 add_action( 'after_setup_theme', 'rectangle_after_theme_setup' );
 
