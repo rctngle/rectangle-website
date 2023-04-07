@@ -1,10 +1,25 @@
-.post__media, .projects {
+.projects {
 	.column:nth-child(even) {
 		padding: 0 var(--padding) var(--padding) calc(var(--padding) / 2);
 	}
 	.column:nth-child(odd) {
 		padding: 0 calc(var(--padding) / 2) var(--padding) var(--padding);
 	}	
+}
+
+.post__media {
+	.column:nth-child(even) {
+		padding: 0 calc(var(--padding) / 2) var(--padding) var(--padding);	
+		@include breakpoint(xsm){
+			padding: 0 var(--padding) var(--padding) calc(var(--padding) / 2);	
+		}
+		
+	}
+	.column:nth-child(odd) {
+		padding: 0 calc(var(--padding) / 2) var(--padding) var(--padding);	
+		
+		
+	}		
 }
 
 .about, .post__about {

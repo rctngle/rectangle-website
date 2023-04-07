@@ -6,7 +6,32 @@ breakpoint.refreshValue = function () {
 
 window.addEventListener('DOMContentLoaded', e=>{
 	breakpoint.refreshValue()
-	console.log('rectangle')
+	document.querySelectorAll('.audio').forEach(video=>{
+		video.addEventListener('click', e=> {
+			video.muted = !video.muted
+			if (video.muted) {
+				video.parentNode.classList.remove('unmuted')
+			} else {
+				video.parentNode.classList.add('unmuted')
+			}
+		})
+	})
+	document.querySelectorAll('.audiotoggle').forEach(control=>{
+		control.addEventListener('click', e=> {
+			e.preventDefault()
+			video = control.parentNode.parentNode.parentNode.querySelector('.post__mediaitem video')
+			console.log(video)
+		
+			video.muted = !video.muted
+			if (video.muted) {
+				video.parentNode.classList.remove('unmuted')
+			} else {
+				video.parentNode.classList.add('unmuted')
+			}
+		})
+		
+	})
+
 })
 
 
@@ -22,7 +47,7 @@ function doLetters(){
 		const bbox = document.querySelector('.endmatter').getBoundingClientRect()
 
 		var extraPosition = bbox.top - document.body.scrollTop - window.innerHeight
-		console.log(extraPosition)
+
 		if(-extraPosition >= window.innerHeight){
 
 

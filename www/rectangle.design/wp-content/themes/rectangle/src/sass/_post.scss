@@ -1,8 +1,23 @@
 .post {
 	$self: &;
+
+	.rectangle__center {
+		left: 85%;
+	}
+	&__about {
+		padding-top: 20px;
+		grid-template-columns: 85% 15%;
+		@include breakpoint(xsm){
+			padding-top: 0;
+			grid-template-columns: 1fr 1fr;
+		}
+	}
 	&--layout-75_25 {
 		.rectangle__center {
-			left: 68%;
+			@include breakpoint(xsm){
+				left: 68%;	
+			}
+			
 		}
 		#{$self}__media {			
 			grid-template-columns: 3fr 1.41fr;	
@@ -12,6 +27,12 @@
 		}
 	}
 	&--layout-50_50 {
+		.rectangle__center {
+			@include breakpoint(xsm){
+				left: 50%;	
+			}
+			
+		}
 		#{$self}__media {	
 
 			grid-template-columns: 1fr 1fr;			
@@ -19,7 +40,9 @@
 	}
 	&--layout-100 {
 		.rectangle__center {
-			left: 85%;
+			@include breakpoint(xsm){
+				left: 85%;
+			}
 		}
 		#{$self}__media {
 			grid-template-columns: 85% 15%;
@@ -29,12 +52,29 @@
 		margin: calc(var(--padding) / 2) 0;
 	}
 	&__mediacaption {
-		display: flex;
-		justify-content: flex-end;
+		@include breakpoint(xsm){
+			display: flex;
+			justify-content: flex-end;	
+		}
+		
 		> div {
 			flex: 0 1 50%;
 			padding: var(--smpadding);
 			@include caption;
+		}
+	}
+	.post__media .post__medialeft:nth-child(odd) {
+		padding-bottom: 0;
+		@include breakpoint(xsm){
+			padding-bottom: var(--padding);
+		}
+	}
+	&__media {
+		width: 85%;
+		display: block;
+		@include breakpoint(xsm){
+			width: 100%;
+			display: grid;
 		}
 	}
 	&__content {
@@ -45,8 +85,23 @@
 		justify-content: space-between;
 	}
 	&__controls {
+		.mobile {
+			@include linkunderline;
+		}
 		a {
 			text-decoration: none;
 		}
 	}
+}
+.audiotoggle {
+	text-align: right;
+	display: block;
+	&::before {
+		content: 'un';
+	}
+}
+.unmuted {
+	.audiotoggle::before {
+		content: '';
+	}	
 }

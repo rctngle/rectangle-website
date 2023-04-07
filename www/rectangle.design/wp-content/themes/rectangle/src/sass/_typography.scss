@@ -48,7 +48,12 @@ h4 {
 }
 
 @mixin caption {
-	font-size: 12px;
+	font-size: 11px;
+	@include breakpoint(xsm){
+		font-size: 12px;
+	}
+	
+
 }
 h5 {
 	text-transform: uppercase;

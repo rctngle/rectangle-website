@@ -41,7 +41,12 @@
 .upper {
 	text-transform: uppercase;
 }
-
+.desktop {
+	display: none;
+	@include breakpoint(xsm){
+		display: block;
+	}
+}
 .mobile {
 	@include breakpoint(xsm){
 		display: none;

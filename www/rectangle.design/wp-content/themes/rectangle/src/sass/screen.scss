@@ -118,7 +118,7 @@ body.touch {
 	a {
 		text-decoration: none;
 		&:hover {
-			color: blue;
+			color: #999;
 		}
 	}
 	> div {
@@ -143,6 +143,7 @@ body.touch {
 		left: 50%;
 		width: 3vw;
 		margin-left: -1.5vw;
+
 	}
 	&__right {
 		padding-right: 2vw;
@@ -162,6 +163,10 @@ body.touch {
 	}
 }
 
+.medialink,
+.post__mediaitem {
+	
+}
 
 
 

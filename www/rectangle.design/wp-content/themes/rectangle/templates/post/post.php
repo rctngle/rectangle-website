@@ -52,22 +52,25 @@ $next = $projects_query->posts[$next_idx];
 			<div><a href="<?php echo site_url();?>">A</a></div>
 		</div>
 	</div>
-	<div class="post__about grid grid grid--columns-2">
+	<div class="post__about grid grid--columns-2">
 		<div class="column">
 			<div class="post__titlecontrols">
 				<div class="post__title">
 					<h2><?php the_title(); ?></h2>
 					<?php if (get_field('date')): ?>
-						<div><em><?php the_field('date'); ?></em></div>
+						<div><?php the_field('date'); ?></div>
 					<?php endif; ?>
 					<?php if (get_field('url')): ?>
 						<div><a href="<?php the_field('url'); ?>" target="_blank"><?php echo parse_url(get_field('url'))['host']; ?></a></div>
 					<?php endif; ?>
 				</div>
 				<div class="post__controls">
-					<a href="<?php echo get_the_permalink($prev); ?>">&larr;</a>
-					Project <?php echo get_post_field( 'menu_order', get_the_ID()); ?> / <?php echo wp_count_posts()->publish; ?>
-					<a href="<?php echo get_the_permalink($next); ?>">&rarr;</a>
+					<div class="desktop">
+						<a href="<?php echo get_the_permalink($prev); ?>">&larr;</a>
+						Project <?php echo get_post_field( 'menu_order', get_the_ID()); ?> / <?php echo wp_count_posts()->publish; ?>
+						<a href="<?php echo get_the_permalink($next); ?>">&rarr;</a>
+					</div>
+					<a href="<?php echo get_the_permalink($next); ?>" class="mobile">next</a>
 				</div>
 			</div>
 
@@ -81,11 +84,9 @@ $next = $projects_query->posts[$next_idx];
 
 		</div>
 	</div>
-	<div class="post__media grid">
+	<div class="post__media">
 		<div class="post__medialeft column"><?php get_template_part('templates/post/media', null, ['field' => 'media_left']); ?></div>
 		<div class="post__mediaright column"><?php get_template_part('templates/post/media', null, ['field' => 'media_right']); ?></div>
 	</div>
-
 </article>
-<hr />
 
